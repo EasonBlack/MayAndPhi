@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="box__position_tl40">
+    <button id="btnJet">JET</button>
+</div>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="820" height="420"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="circle.js"></script>
+<script src="fire_entry.js"></script>
+<script>
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let _entry = {
+        x: 400,
+        y: 200,
+        num: 20,
+        ctx: ctx
+    }
+    let entry = new Entry(_entry);
+
+    $('#btnJet').click(function () {
+        entry.reset();
+    });
+    entry.createRandom();
+    draw();
+    function draw() {
+        entry.setCircles();
+        entry.draw();
+        requestAnimationFrame(draw);
+    }
+</script>
+</html>

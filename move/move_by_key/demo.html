@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="420" height="420"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="circle.js"></script>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let circle = new Circle({x: 20, y: 20, r: 10, v: 3, ctx: ctx});
+
+    $(window).on('keydown', function (e) {
+        if (e.keyCode == 39) {   //right
+            circle.setCircle('VK_RIGHT');
+        }
+        if (e.keyCode == 37) {   //left
+            circle.setCircle('VK_LEFT');
+        }
+        if (e.keyCode == 38) {   //up
+            circle.setCircle('VK_UP');
+        }
+        if (e.keyCode == 40) {   //down
+            circle.setCircle('VK_DOWN');
+        }
+        circle.draw();
+    });
+    draw();
+    function draw() {
+        circle.draw();
+    }
+</script>
+</html>

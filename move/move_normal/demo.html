@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="420" height="420"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="circle.js"></script>
+<script>
+    const canvas = document.getElementById('canvas');
+    const VIEW_WIDTH = canvas.width;
+    const ctx = canvas.getContext('2d');
+
+    let _circle = {
+        x: 20,
+        y: 20,
+        r: 10,
+        v: 3,
+        color: 'rgba(128,165,208,0.7)'
+    }
+
+    let circle = new Circle(_circle);
+
+    draw();
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        circle.draw(ctx);
+        circle.setCircle();
+        requestAnimationFrame(draw);
+    }
+</script>
+</html>

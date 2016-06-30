@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="420" height="320"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="character.js"></script>
+<script src="background.js"></script>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let imgFighter = new Image();
+    imgFighter.src = '../../images/street_fighter.png';
+    let img = new Image();
+    img.src = '../../images/street.jpg';
+    let _bgStreet = {image: img, ctx: ctx, v:5};
+    let _chaFighter = {image: imgFighter, ctx: ctx};
+    let bgStreet = new BackGround(_bgStreet);
+    let chaFighter = new Character(_chaFighter);
+    bgStreet.setCharacter(chaFighter);
+
+    img.onload = function() {
+        bgStreet.draw();
+    };
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="420" height="320"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="background.js"></script>
+<script src="group.js"></script>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let img = new Image();
+    img.src = '../../images/street.jpg';
+    let imgMoon = new Image();
+    imgMoon.src = '../../images/moon.png';
+    let imgGrass = new Image();
+    imgGrass.src = '../../images/grass.png';
+    let _bgStreet = {image: img, ctx: ctx, position: 'FULL', heightSize: 'FULL', widthSize: "FULL", standard: true};
+    let _bgGrass = {image: imgGrass, ctx: ctx,  position: 'BOTTOM', widthSize: "FULL", heightSize: '80'};
+    let _bgMoon = {image: imgMoon, ctx: ctx, position: 'RIGHT-CORNER', heightSize: '50', widthSize: "50"};
+    let backgroundStreet = new BackGround(_bgStreet);
+    let backgroundGrass = new BackGround(_bgGrass);
+    let backgroundMoon = new BackGround(_bgMoon);
+
+    let group = new Group({ctx: ctx, v: 2});
+    group.setBackground(backgroundStreet);
+    group.setBackground(backgroundGrass);
+    group.setBackground(backgroundMoon);
+    group.setSpeed();
+    draw();
+    function draw() {
+        group.auto();
+        requestAnimationFrame(draw);
+    }
+</script>
+</html>

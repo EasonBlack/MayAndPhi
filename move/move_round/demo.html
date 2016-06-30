@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="820" height="620"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="circle.js"></script>
+<script src="point.js"></script>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let _circle1 = {r: 10, R: 250, v: 5, color: 'lightblue'}
+    let _circle2 = {r: 10, R: 150, v: 5, color: 'lightgreen'}
+    let _circle3 = {r: 10, R: 180, v: 15, color: 'red'}
+    let _point = {x: 400, y: 300, ctx: ctx}
+    let circle1 = new Circle(_circle1);
+    let circle2 = new Circle(_circle2);
+    let circle3 = new Circle(_circle3);
+    let point = new Point(_point);
+    point.setCircle(circle1);
+    point.setCircle(circle2);
+    point.setCircle(circle3);
+
+    draw();
+    function draw() {
+        point.reset();
+        point.draw();
+        requestAnimationFrame(draw);
+    }
+</script>
+</html>

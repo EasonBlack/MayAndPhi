@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="420" height="320"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="background.js"></script>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let img = new Image();
+    img.src = '../../images/street.jpg';
+    let _bg = {image: img, v: 2, ctx: ctx};
+    let background= new BackGround(_bg);
+
+    draw();
+    function draw() {
+        background.auto();
+        requestAnimationFrame(draw);
+    }
+</script>
+</html>

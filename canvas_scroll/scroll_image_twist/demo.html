@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+
+<canvas class='box__border_grey box__position_m40' id="canvas" width="820" height="520"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="background.js"></script>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let _moon = new Image();
+    _moon.src = '../../images/moon.png';
+    let BG = new Background({image: _moon, ctx: ctx});
+    _moon.onload = function(){
+        draw();
+    }
+
+
+    function draw() {
+        BG.draw();
+        requestAnimationFrame(draw);
+    }
+</script>
+</html>

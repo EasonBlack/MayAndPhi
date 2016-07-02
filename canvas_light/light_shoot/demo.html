@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="820" height="520"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="point.js"></script>
+<script src="light.js"></script>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let light = new Light({x: 100, y: 100, h: 2, ctx: ctx});
+    let p1 = new Point({x: 40, y: 40, ctx: ctx});
+    let p2 = new Point({x: 140, y: 140, ctx: ctx});
+    let p3 = new Point({x: 240, y: 340, ctx: ctx});
+    light.addTarget(p1);
+    light.addTarget(p2);
+    light.addTarget(p3);
+    draw();
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //light.shoot();
+        light.drawAll();
+        requestAnimationFrame(draw);
+    }
+</script>
+</html>

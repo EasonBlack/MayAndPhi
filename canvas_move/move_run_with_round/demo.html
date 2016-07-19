@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="820" height="620"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="circle.js"></script>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let _circle = {r: 10, v: 2, color: 'lightblue', ctx:ctx};
+    let circle = new Circle(_circle);
+
+    draw();
+    function draw() {
+        circle.draw();
+
+        requestAnimationFrame(draw);
+    }
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/main.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas class='box__border_grey box__position_m40' id="canvas" width="820" height="620"></canvas>
+</body>
+<script src="../../vendor/jquery.min.js"></script>
+<script src="circle.js"></script>
+<script src="slope.js"></script>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let _circle = {r: 10, v: 2, color: 'lightblue', ctx: ctx};
+    let circle = new Circle(_circle);
+    let _slope1 = {ctx:ctx, xStart: 200,  xEnd: 250, height:50};
+    let _slope2 = {ctx:ctx, xStart: 300,  xEnd: 350, height:100};
+    let slope1 = new Slope(_slope1);
+    let slope2 = new Slope(_slope2);
+    circle.setSlope(slope1);
+    circle.setSlope(slope2);
+    draw();
+    function draw() {
+        circle.draw();
+        requestAnimationFrame(draw);
+    }
+</script>
+</html>
